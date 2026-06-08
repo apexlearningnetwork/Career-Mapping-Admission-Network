@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Learning Network | Future Career Mapping & Admission Network</title>
+<meta name="description" content="Apex Learning Network – Future Career Mapping & Admission Network. Direct Admission in Top Colleges of Bangalore. Helping students from Northeast India find their future.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8CC7A;
+  --gold-dim: #8A6A2A;
+  --navy: #050D1A;
+  --navy-mid: #0A1628;
+  --navy-light: #0F2040;
+  --cyan: #00D4FF;
+  --cyan-dim: #0099BB;
+  --white: #F0EDE6;
+  --gray: #8A8A9A;
+  --red-accent: #FF4444;
+  --green-accent: #00FF88;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease, width 0.3s, height 0.3s;
+  opacity: 0.6;
+}
+body:hover .cursor { opacity: 1; }
+@media (max-width: 768px) { .cursor, .cursor-ring { display: none; } body { cursor: auto; } }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 5vw;
+  background: linear-gradient(180deg, rgba(5,13,26,0.98) 0%, rgba(5,13,26,0) 100%);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  transition: background 0.3s;
+}
+nav.scrolled {
+  background: rgba(5,13,26,0.97);
+  border-bottom: 1px solid rgba(201,168,76,0.25);
+}
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.nav-logo-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.nav-logo-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.48rem;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(240,237,230,0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  color: var(--navy) !important;
+  padding: 9px 20px !important;
+  border-radius: 2px;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em;
+}
+.nav-cta::after { display: none !important; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 26px; height: 2px;
+  background: var(--gold);
+  transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(5,13,26,0.98);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* HERO */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 5vw;
+  max-width: 1100px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.25);
+  padding: 6px 18px;
+  border-radius: 100px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  animation: fadeUp 1s ease both;
+}
+.hero-badge span { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 8vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+  animation: fadeUp 1s 0.2s ease both;
+}
+.hero-title strong {
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dim));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+.hero-tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+  letter-spacing: 0.3em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 1s 0.35s ease both;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: rgba(240,237,230,0.65);
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+  animation: fadeUp 1s 0.5s ease both;
+}
+.hero-sub em {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+}
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 1s 0.65s ease both;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  color: var(--navy);
+  padding: 14px 32px;
+  border: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: none;
+  border-radius: 2px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 24px rgba(201,168,76,0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(201,168,76,0.4);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  padding: 13px 30px;
+  border: 1px solid rgba(240,237,230,0.25);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: none;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+@media (max-width: 768px) { .btn-primary, .btn-secondary { cursor: pointer; } }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeUp 1s 1s ease both;
+  z-index: 2;
+}
+.hero-scroll span {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: rgba(240,237,230,0.3);
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollLine 2s ease infinite;
+}
+@keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+/* SECTION COMMON */
+section {
+  padding: 100px 5vw;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  width: 30px; height: 1px;
+  background: var(--cyan);
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.section-title .gold { color: var(--gold); }
+.divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin-bottom: 3rem;
+}
+
+/* CAREERS SECTION */
+#careers { padding-top: 0; }
+.careers-header { text-align: center; margin-bottom: 1rem; }
+.careers-header .section-label { justify-content: center; }
+.careers-header .section-label::before { display: none; }
+.careers-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.careers-question em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 600;
+}
+.careers-sub {
+  color: rgba(240,237,230,0.5);
+  margin-bottom: 3rem;
+  font-size: 1rem;
+}
+
+.careers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+.career-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(15,32,64,0.9), rgba(10,22,40,0.95));
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 6px;
+  padding: 28px 22px;
+  cursor: none;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  group: true;
+}
+.career-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.career-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--gold);
+  box-shadow: 0 20px 60px rgba(201,168,76,0.15), 0 0 0 1px rgba(201,168,76,0.1);
+}
+.career-card:hover::before { opacity: 1; }
+@media (max-width: 768px) { .career-card { cursor: pointer; } }
+
+.career-icon {
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+  display: block;
+  filter: grayscale(0.2);
+}
+.career-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.career-demand {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--green-accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.career-demand::before {
+  content: '▲';
+  font-size: 0.5rem;
+}
+.career-tag {
+  display: inline-block;
+  margin-top: 10px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.2);
+  color: var(--cyan);
+  font-size: 0.65rem;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.1em;
+}
+.career-num {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(240,237,230,0.15);
+  letter-spacing: 0.1em;
+}
+
+/* COLLEGES SECTION */
+#colleges { background: linear-gradient(180deg, transparent, rgba(10,22,40,0.5), transparent); }
+.colleges-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.2);
+  color: rgba(240,237,230,0.5);
+  padding: 8px 20px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+@media (max-width: 768px) { .tab-btn { cursor: pointer; } }
+
+.colleges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.college-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--navy-light);
+  border: 1px solid rgba(201,168,76,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: none;
+}
+.college-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.3);
+  border-color: rgba(201,168,76,0.3);
+}
+@media (max-width: 768px) { .college-card { cursor: pointer; } }
+.college-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.8) saturate(0.8);
+  transition: filter 0.3s;
+}
+.college-card:hover .college-img { filter: brightness(0.9) saturate(1); }
+.college-img-placeholder {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.college-img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(45deg, transparent 45%, rgba(201,168,76,0.05) 50%, transparent 55%),
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(201,168,76,0.03) 30px, rgba(201,168,76,0.03) 31px);
+}
+.college-info {
+  padding: 18px 20px 20px;
+}
+.college-sector {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 6px;
+}
+.college-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.college-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.college-tag {
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--gold);
+  font-size: 0.62rem;
+  padding: 3px 9px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+}
+.college-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(5,13,26,0.85);
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  padding: 4px 10px;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  backdrop-filter: blur(6px);
+}
+
+/* WHY BANGALORE */
+#bangalore {
+  position: relative;
+  padding: 120px 5vw;
+  overflow: hidden;
+}
+#bangalore::before {
+  content: 'BANGALORE';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(80px, 20vw, 200px);
+  font-weight: 700;
+  color: rgba(201,168,76,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+}
+.bangalore-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) { .bangalore-layout { grid-template-columns: 1fr; gap: 3rem; } }
+.bangalore-left {}
+.bangalore-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.3;
+  color: rgba(240,237,230,0.7);
+  margin-bottom: 2rem;
+}
+.bangalore-headline strong { color: var(--white); font-weight: 700; display: block; font-size: 1.2em; }
+.bangalore-headline .gold { color: var(--gold); }
+
+.northeast-origin {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.origin-tag {
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  border-radius: 100px;
+}
+
+.bangalore-body {
+  color: rgba(240,237,230,0.6);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.bangalore-body strong { color: var(--white); }
+
+.bangalore-right {}
+.bangalore-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.stat-box {
+  background: linear-gradient(135deg, rgba(15,32,64,0.9), rgba(10,22,40,0.8));
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 6px;
+  padding: 22px 20px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.stat-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.stat-box:hover { border-color: rgba(201,168,76,0.3); transform: translateX(4px); }
+.stat-box:hover::after { opacity: 1; }
+.stat-icon { font-size: 1.8rem; margin-bottom: 10px; }
+.stat-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.stat-desc { font-size: 0.78rem; color: rgba(240,237,230,0.45); line-height: 1.4; }
+
+/* MANIFESTO */
+#manifesto {
+  text-align: center;
+  padding: 80px 5vw;
+  position: relative;
+  overflow: hidden;
+  max-width: none;
+}
+.manifesto-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 60% at 30% 50%, rgba(201,168,76,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 70% 50%, rgba(0,212,255,0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+.manifesto-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  max-width: 900px;
+  margin: 0 auto 1rem;
+  position: relative;
+  z-index: 1;
+}
+.manifesto-line strong {
+  font-weight: 700;
+  color: var(--gold);
+  font-style: italic;
+}
+.manifesto-sub {
+  font-size: 1.1rem;
+  color: rgba(240,237,230,0.55);
+  max-width: 600px;
+  margin: 2rem auto 0;
+  line-height: 1.7;
+  position: relative; z-index: 1;
+}
+.manifesto-sub strong { color: var(--white); }
+
+/* ABOUT BRIDGE */
+#bridge { padding: 100px 5vw; }
+.bridge-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) { .bridge-layout { grid-template-columns: 1fr; gap: 3rem; } }
+.bridge-visual {
+  position: relative;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bridge-3d {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  perspective: 800px;
+}
+.bridge-cube {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%) rotateX(15deg) rotateY(var(--ry, 0deg));
+  animation: rotateCube 12s linear infinite;
+}
+@keyframes rotateCube { to { transform: translate(-50%, -50%) rotateX(15deg) rotateY(360deg); } }
+.cube-face {
+  position: absolute;
+  width: 120px; height: 120px;
+  border: 1px solid rgba(201,168,76,0.3);
+  background: rgba(201,168,76,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+.cf { transform: translateZ(60px); }
+.cb { transform: rotateY(180deg) translateZ(60px); }
+.cl { transform: rotateY(-90deg) translateZ(60px); }
+.cr { transform: rotateY(90deg) translateZ(60px); }
+.ct { transform: rotateX(90deg) translateZ(60px); }
+.cbo { transform: rotateX(-90deg) translateZ(60px); }
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.1);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotateX(70deg);
+  animation: orbitSpin 8s linear infinite;
+}
+.orbit-1 { width: 220px; height: 220px; }
+.orbit-2 { width: 300px; height: 300px; animation-duration: 12s; animation-direction: reverse; border-color: rgba(0,212,255,0.08); }
+.orbit-dot {
+  position: absolute;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  top: -3px; left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px var(--gold);
+}
+.orbit-dot-2 {
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  top: auto; bottom: -3px;
+}
+@keyframes orbitSpin { to { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg); } }
+
+.bridge-text {}
+.bridge-text p {
+  color: rgba(240,237,230,0.65);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.bridge-text p strong { color: var(--white); }
+.bridge-text p em { color: var(--gold); font-style: normal; }
+.bridge-steps {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bridge-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.step-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  width: 28px; height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-text { font-size: 0.95rem; color: rgba(240,237,230,0.7); line-height: 1.5; }
+.step-text strong { color: var(--white); }
+
+/* CONTACT */
+#contact {
+  padding: 80px 5vw 120px;
+  max-width: none;
+  background: linear-gradient(180deg, transparent, rgba(10,22,40,0.6));
+}
+.contact-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.contact-tagline strong { color: var(--gold); font-weight: 700; }
+.contact-sub {
+  color: rgba(240,237,230,0.5);
+  font-size: 1rem;
+  margin-bottom: 3rem;
+}
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.contact-card {
+  background: rgba(15,32,64,0.6);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 6px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.contact-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-4px);
+}
+.contact-card-icon { font-size: 2rem; margin-bottom: 12px; }
+.contact-card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.contact-card-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  word-break: break-all;
+}
+.contact-card-value a {
+  color: var(--gold);
+  text-decoration: none;
+}
+.contact-card-value a:hover { text-decoration: underline; }
+
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  padding: 16px 36px;
+  border-radius: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.2);
+}
+.contact-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(37,211,102,0.35);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 40px 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(240,237,230,0.25);
+  letter-spacing: 0.08em;
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.footer-links a {
+  color: rgba(240,237,230,0.35);
+  text-decoration: none;
+  font-size: 0.78rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* Floating contact button */
+.float-wa {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 900;
+  background: #25D366;
+  color: white;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.float-wa:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+
+/* Grid background lines */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Colleges hidden by default */
+.college-group { display: none; }
+.college-group.active { display: contents; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Noise overlay */
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="noise"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-main">Apex Learning Network</div>
+    <div class="nav-logo-sub">Future Career Mapping & Admission Network</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#colleges">Colleges</a></li>
+    <li><a href="#bangalore">Why Bangalore</a></li>
+    <li><a href="#bridge">About Us</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#careers" onclick="closeMobile()">Careers 2030</a>
+  <a href="#colleges" onclick="closeMobile()">Colleges</a>
+  <a href="#bangalore" onclick="closeMobile()">Why Bangalore</a>
+  <a href="#bridge" onclick="closeMobile()">About Us</a>
+  <a href="#contact" onclick="closeMobile()" style="color:var(--gold)">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span> 2026 — Direct Admission Open</div>
+    <h1 class="hero-title">
+      Choose Your Future,<br>
+      <strong>Then Choose Your College.</strong>
+    </h1>
+    <div class="hero-tagline">Future Career Mapping &amp; Admission Network</div>
+    <p class="hero-sub">
+      The degree isn't dying. <em>The outdated curriculum is.</em><br>
+      We help you find future-ready colleges for the AI-driven world of 2030.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#careers" class="btn-primary">Map Your Career →</a>
+      <a href="https://wa.me/916002452250" class="btn-secondary" target="_blank">Talk to Advisor</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- CAREERS SECTION -->
+<section id="careers">
+  <div class="careers-header reveal">
+    <div class="section-label">Career Compass 2030</div>
+    <h2 class="careers-question">What do you want to become <em>in 2030?</em></h2>
+    <p class="careers-sub">Choose a future-ready career path. Then we'll find you the right college.</p>
+  </div>
+  <div class="careers-grid">
+    <div class="career-card reveal">
+      <span class="career-num">01</span>
+      <span class="career-icon">🤖</span>
+      <div class="career-title">AI Engineer</div>
+      <div class="career-demand">High Demand 2030</div>
+      <span class="career-tag">Engineering</span>
+    </div>
+    <div class="career-card reveal">
+      <span class="career-num">02</span>
+      <span class="career-icon">📊</span>
+      <div class="career-title">Data Scientist</div>
+      <div class="career-demand">Explosive Growth</div>
+      <span class="career-tag">Tech & Analytics</span>
+    </div>
+    <div class="career-card reveal">
+      <span class="career-num">03</span>
+      <span class="career-icon">🛡️</span>
+      <div class="career-title">Cyber Security Analyst</div>
+      <div class="career-demand">Critical Sector</div>
+      <span class="career-tag">Security</span>
+    </div>
+    <div class="career-card reveal">
+      <span class="career-num">04</span>
+      <span class="career-icon">🦾</span>
+      <div class="career-title">Robotics Engineer</div>
+      <div class="career-demand">Next-Gen Skills</div>
+      <span class="career-tag">Engineering</span>
+    </div>
+    <div class="career-card reveal">
+      <span class="career-num">05</span>
+      <span class="career-icon">🩺</span>
+      <div class="career-title">Doctor with AI Healthcare Skills</div>
+      <div class="career-demand">Future of Medicine</div>
+      <span class="career-tag">Healthcare + AI</span>
+    </div>
+    <div class="career-card reveal">
+      <span class="career-num">06</span>
+      <span class="career-icon">⚖️</span>
+      <div class="career-title">Digital Lawyer</div>
+      <div class="career-demand">Emerging Field</div>
+      <span class="career-tag">Law & Tech</span>
+    </div>
+    <div class="career-card reveal">
+      <span class="career-num">07</span>
+      <span class="career-icon">🧠</span>
+      <div class="career-title">Sports Psychologist</div>
+      <div class="career-demand">Growing Niche</div>
+      <span class="career-tag">Psychology</span>
+    </div>
+    <div class="career-card reveal">
+      <span class="career-num">08</span>
+      <span class="career-icon">📰</span>
+      <div class="career-title">Journalist using AI Media Tools</div>
+      <div class="career-demand">Media Evolution</div>
+      <span class="career-tag">Media & AI</span>
+    </div>
+    <div class="career-card reveal">
+      <span class="career-num">09</span>
+      <span class="career-icon">🏥</span>
+      <div class="career-title">Healthcare Administrator</div>
+      <div class="career-demand">Steady Demand</div>
+      <span class="career-tag">Healthcare Mgmt</span>
+    </div>
+  </div>
+</section>
+
+<!-- COLLEGES SECTION -->
+<section id="colleges">
+  <div class="reveal">
+    <div class="section-label">College Intelligence</div>
+    <h2 class="section-title">Colleges That Will Help You Get a Job<br>in the <span class="gold">AI Economy of 2030</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="colleges-tabs reveal">
+    <button class="tab-btn active" onclick="filterColleges('engineering', this)">Engineering</button>
+    <button class="tab-btn" onclick="filterColleges('medical', this)">Medical</button>
+    <button class="tab-btn" onclick="filterColleges('arts', this)">Arts & Science</button>
+    <button class="tab-btn" onclick="filterColleges('all', this)">All Colleges</button>
+  </div>
+  <div class="colleges-grid" id="colleges-grid">
+
+    <!-- ENGINEERING -->
+    <div class="college-card college-group engineering active reveal">
+      <div class="college-badge">Top Ranked</div>
+      <div class="college-img-placeholder">🎓</div>
+      <div class="college-info">
+        <div class="college-sector">Engineering</div>
+        <div class="college-name">RV College of Engineering</div>
+        <div class="college-tags">
+          <span class="college-tag">CSE-AI</span>
+          <span class="college-tag">Data Science</span>
+          <span class="college-tag">Placements ★★★★★</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group engineering active reveal">
+      <div class="college-badge">Dual Campus</div>
+      <div class="college-img-placeholder">🏛️</div>
+      <div class="college-info">
+        <div class="college-sector">Engineering</div>
+        <div class="college-name">BMSCE & BMSIT</div>
+        <div class="college-tags">
+          <span class="college-tag">AI & ML</span>
+          <span class="college-tag">Robotics</span>
+          <span class="college-tag">Cyber Security</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group engineering active reveal">
+      <div class="college-badge">NIRFRanked</div>
+      <div class="college-img-placeholder">🔬</div>
+      <div class="college-info">
+        <div class="college-sector">Engineering</div>
+        <div class="college-name">MS Ramaiah Institute of Technology</div>
+        <div class="college-tags">
+          <span class="college-tag">CSE</span>
+          <span class="college-tag">Electronics</span>
+          <span class="college-tag">Research Focus</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group engineering active reveal">
+      <div class="college-badge">Deemed Univ</div>
+      <div class="college-img-placeholder">⚡</div>
+      <div class="college-info">
+        <div class="college-sector">Engineering</div>
+        <div class="college-name">PES University</div>
+        <div class="college-tags">
+          <span class="college-tag">AI Engineering</span>
+          <span class="college-tag">Data Science</span>
+          <span class="college-tag">Startup Eco</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group engineering active reveal">
+      <div class="college-badge">Deemed Univ</div>
+      <div class="college-img-placeholder">🌟</div>
+      <div class="college-info">
+        <div class="college-sector">Engineering / Management</div>
+        <div class="college-name">Jain University</div>
+        <div class="college-tags">
+          <span class="college-tag">CSE-AI</span>
+          <span class="college-tag">Journalism</span>
+          <span class="college-tag">Law</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group engineering active reveal">
+      <div class="college-badge">Multi-Campus</div>
+      <div class="college-img-placeholder">🏆</div>
+      <div class="college-info">
+        <div class="college-sector">Engineering / Sciences</div>
+        <div class="college-name">MAHE – Manipal</div>
+        <div class="college-tags">
+          <span class="college-tag">Engineering</span>
+          <span class="college-tag">Medical</span>
+          <span class="college-tag">Allied Health</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTS & SCIENCE -->
+    <div class="college-card college-group arts reveal">
+      <div class="college-badge">Autonomous</div>
+      <div class="college-img-placeholder">📚</div>
+      <div class="college-info">
+        <div class="college-sector">Arts, Science & Management</div>
+        <div class="college-name">Christ University</div>
+        <div class="college-tags">
+          <span class="college-tag">Psychology</span>
+          <span class="college-tag">Media Studies</span>
+          <span class="college-tag">Commerce AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group arts reveal">
+      <div class="college-badge">Women's College</div>
+      <div class="college-img-placeholder">🌸</div>
+      <div class="college-info">
+        <div class="college-sector">Arts & Science</div>
+        <div class="college-name">Mount Carmel College</div>
+        <div class="college-tags">
+          <span class="college-tag">Psychology</span>
+          <span class="college-tag">Data Analytics</span>
+          <span class="college-tag">Journalism</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group arts reveal">
+      <div class="college-badge">Jesuit Heritage</div>
+      <div class="college-img-placeholder">🕊️</div>
+      <div class="college-info">
+        <div class="college-sector">Arts & Science</div>
+        <div class="college-name">St. Joseph's University</div>
+        <div class="college-tags">
+          <span class="college-tag">Law</span>
+          <span class="college-tag">Mass Comm</span>
+          <span class="college-tag">Psychology</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group arts reveal">
+      <div class="college-badge">Growing Fast</div>
+      <div class="college-img-placeholder">✝️</div>
+      <div class="college-info">
+        <div class="college-sector">Arts, Science & Commerce</div>
+        <div class="college-name">Kristu Jayanti College</div>
+        <div class="college-tags">
+          <span class="college-tag">BCA AI</span>
+          <span class="college-tag">Sports Sci</span>
+          <span class="college-tag">Healthcare Admin</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEDICAL -->
+    <div class="college-card college-group medical reveal">
+      <div class="college-badge">MBBS Seats</div>
+      <div class="college-img-placeholder">🩻</div>
+      <div class="college-info">
+        <div class="college-sector">Medical College</div>
+        <div class="college-name">Dr. B.R. Ambedkar Medical College</div>
+        <div class="college-tags">
+          <span class="college-tag">MBBS</span>
+          <span class="college-tag">MD / MS</span>
+          <span class="college-tag">AI Healthcare</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group medical reveal">
+      <div class="college-badge">Multi Dept</div>
+      <div class="college-img-placeholder">🏨</div>
+      <div class="college-info">
+        <div class="college-sector">Medical College</div>
+        <div class="college-name">BGS Global Institute of Medical Sciences</div>
+        <div class="college-tags">
+          <span class="college-tag">MBBS</span>
+          <span class="college-tag">Hospital Mgmt</span>
+          <span class="college-tag">Research</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="college-card college-group medical reveal">
+      <div class="college-badge">Gov Affiliated</div>
+      <div class="college-img-placeholder">💊</div>
+      <div class="college-info">
+        <div class="college-sector">Medical College</div>
+        <div class="college-name">Sapthagiri Medical College</div>
+        <div class="college-tags">
+          <span class="college-tag">MBBS</span>
+          <span class="college-tag">Pharmacy</span>
+          <span class="college-tag">Nursing</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY BANGALORE -->
+<section id="bangalore" style="max-width:none; padding:120px 5vw;">
+  <div style="max-width:1300px; margin:0 auto;">
+    <div class="bangalore-layout">
+      <div class="bangalore-left reveal">
+        <div class="section-label">Why Migrate for Education</div>
+        <h2 class="section-title">Why students from<br><span class="gold">Northeast India</span> are choosing Bangalore in 2026</h2>
+        <div class="divider"></div>
+        <div class="northeast-origin">
+          <span class="origin-tag">🌿 Assam</span>
+          <span class="origin-tag">🏔️ Bihar</span>
+          <span class="origin-tag">🌺 West Bengal</span>
+          <span class="origin-tag">🌄 Meghalaya</span>
+          <span class="origin-tag">🏞️ Manipur</span>
+          <span class="origin-tag">🌿 Nagaland</span>
+          <span class="origin-tag">⛰️ Mizoram</span>
+          <span class="origin-tag">🌸 Tripura</span>
+          <span class="origin-tag">🌲 Arunachal Pradesh</span>
+          <span class="origin-tag">🏔️ Sikkim</span>
+        </div>
+        <p class="bangalore-body">
+          <strong>Bangalore = India's Future Skills Capital.</strong><br><br>
+          Every student who builds their career in Bangalore gains access to an ecosystem that no other city in India can match. From AI companies to healthcare startups — opportunity is everywhere.
+        </p>
+      </div>
+      <div class="bangalore-right reveal">
+        <div class="bangalore-stats">
+          <div class="stat-box">
+            <div class="stat-icon">🚀</div>
+            <div class="stat-label">Startup Ecosystem</div>
+            <div class="stat-desc">India's Silicon Valley — 10,000+ startups hiring fresh talent</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">🤖</div>
+            <div class="stat-label">AI Companies</div>
+            <div class="stat-desc">Infosys, Wipro, Google India, Amazon AWS — all hiring AI grads</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">💻</div>
+            <div class="stat-label">IT Industry</div>
+            <div class="stat-desc">India's #1 IT hub with 1M+ tech professionals</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">🏥</div>
+            <div class="stat-label">Healthcare Sector</div>
+            <div class="stat-desc">Narayana Health, Manipal, Apollo — world-class placements</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">📋</div>
+            <div class="stat-label">Internships</div>
+            <div class="stat-desc">Real industry exposure from Year 1 itself</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">🎓</div>
+            <div class="stat-label">Placements</div>
+            <div class="stat-desc">Higher CTC packages than any tier-2 city</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto" style="padding:100px 5vw;">
+  <div class="manifesto-bg"></div>
+  <div class="reveal">
+    <div class="section-label" style="justify-content:center;"><span></span>Our Manifesto</div>
+    <p class="manifesto-line">
+      "The degree isn't dying.<br>
+      <strong>The outdated curriculum is."</strong>
+    </p>
+    <p class="manifesto-sub">
+      Apex Learning Network helps students find <strong>future-ready colleges</strong>.<br>
+      We help students choose the right career, the right course, and the right Bangalore college for the AI-driven future.
+    </p>
+  </div>
+  <br><br>
+  <div class="reveal" style="margin-top:2rem;">
+    <p class="manifesto-line" style="font-size:clamp(1.4rem,3vw,2.2rem); color:rgba(240,237,230,0.6);">
+      Let <strong style="color:var(--gold); font-style:italic;">Apex Learning Network</strong><br> become the bridge.
+    </p>
+  </div>
+</section>
+
+<!-- BRIDGE / ABOUT -->
+<section id="bridge">
+  <div class="bridge-layout">
+    <div class="bridge-visual reveal">
+      <div class="bridge-3d">
+        <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+        <div class="orbit orbit-2"><div class="orbit-dot orbit-dot-2"></div></div>
+        <div class="bridge-cube">
+          <div class="cube-face cf">Career</div>
+          <div class="cube-face cb">Future</div>
+          <div class="cube-face cl">Course</div>
+          <div class="cube-face cr">College</div>
+          <div class="cube-face ct">2030</div>
+          <div class="cube-face cbo">Apex</div>
+        </div>
+      </div>
+    </div>
+    <div class="bridge-text reveal">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">Apex Learning Network —<br><span class="gold">Your Bridge to Bangalore</span></h2>
+      <div class="divider"></div>
+      <p>
+        We are Bangalore's premier <strong>Future Career Mapping & Admission Network</strong>. We don't just help students find a college — we help them find their <em>right future</em>.
+      </p>
+      <p>
+        Students from Assam, Bihar, West Bengal, and all across Northeast India come to us because they trust us to find them not just any seat — but the <em>right seat</em> in a college that matches their 2030 career goal.
+      </p>
+      <div class="bridge-steps">
+        <div class="bridge-step">
+          <div class="step-num">01</div>
+          <div class="step-text"><strong>Career Mapping:</strong> Identify your AI-era career goal first</div>
+        </div>
+        <div class="bridge-step">
+          <div class="step-num">02</div>
+          <div class="step-text"><strong>College Matching:</strong> We map the right Bangalore college to your goal</div>
+        </div>
+        <div class="bridge-step">
+          <div class="step-num">03</div>
+          <div class="step-text"><strong>Direct Admission:</strong> Confirmed seat via management quota — guaranteed</div>
+        </div>
+        <div class="bridge-step">
+          <div class="step-num">04</div>
+          <div class="step-text"><strong>Ongoing Support:</strong> Fees, hostel, documentation — we handle it all</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:80px 5vw 120px; max-width:none;">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-label" style="justify-content:center;"><span></span>Direct Admission in Top Colleges</div>
+      <h2 class="contact-tagline">Ready to begin your <strong>2030 career journey?</strong></h2>
+      <p class="contact-sub">One call. One advisor. One right college. Let's begin.</p>
+    </div>
+    <div class="contact-cards reveal">
+      <div class="contact-card">
+        <div class="contact-card-icon">📞</div>
+        <div class="contact-card-label">Call / WhatsApp</div>
+        <div class="contact-card-value"><a href="tel:+916002452250">+91 6002452250</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">✉️</div>
+        <div class="contact-card-label">Email Us</div>
+        <div class="contact-card-value" style="font-size:0.82rem;"><a href="mailto:apexlearningnetworks@gmail.com">apexlearningnetworks@gmail.com</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-icon">📍</div>
+        <div class="contact-card-label">Based In</div>
+        <div class="contact-card-value" style="font-size:0.9rem;">Bangalore, Karnataka<br><span style="color:var(--gray);font-size:0.75rem;">Serving all of India</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <a href="https://wa.me/916002452250?text=Hi%2C%20I%20want%20to%20know%20about%20direct%20admission%20in%20Bangalore%20colleges" class="contact-cta" target="_blank">
+        <span>💬</span> Chat on WhatsApp Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Apex Learning Network</div>
+  <div class="footer-copy">© 2026 · Future Career Mapping & Admission Network · Bangalore</div>
+  <ul class="footer-links">
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#colleges">Colleges</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<!-- Floating WA -->
+<a href="https://wa.me/916002452250" class="float-wa" target="_blank" title="WhatsApp">💬</a>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animCursor() {
+  rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Hamburger
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobile() {
+  ham.classList.remove('open');
+  mob.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// College filter
+function filterColleges(category, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const groups = document.querySelectorAll('.college-group');
+  groups.forEach(g => {
+    if (category === 'all') {
+      g.classList.add('active');
+    } else {
+      g.classList.toggle('active', g.classList.contains(category));
+    }
+  });
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+// Hero canvas — 3D starfield with floating particles
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+
+const STAR_COUNT = 180;
+const stars = Array.from({ length: STAR_COUNT }, () => ({
+  x: Math.random() * 2000 - 1000,
+  y: Math.random() * 2000 - 1000,
+  z: Math.random() * 1500,
+  r: Math.random() * 1.5 + 0.3,
+  speed: Math.random() * 0.4 + 0.1,
+}));
+
+const NODES = 40;
+const nodes = Array.from({ length: NODES }, () => ({
+  x: Math.random() * W,
+  y: Math.random() * H,
+  vx: (Math.random() - 0.5) * 0.4,
+  vy: (Math.random() - 0.5) * 0.4,
+  r: Math.random() * 2 + 1,
+  gold: Math.random() > 0.6,
+}));
+
+let mouseX = W / 2, mouseY = H / 2;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+function draw(t) {
+  ctx.clearRect(0, 0, W, H);
+
+  // Deep space gradient
+  const grd = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W,H)*0.8);
+  grd.addColorStop(0, 'rgba(10,22,40,0)');
+  grd.addColorStop(1, 'rgba(5,13,26,0.85)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, W, H);
+
+  // Stars (3D flythrough)
+  stars.forEach(s => {
+    s.z -= s.speed;
+    if (s.z <= 0) { s.z = 1500; s.x = Math.random() * 2000 - 1000; s.y = Math.random() * 2000 - 1000; }
+    const scale = 1500 / s.z;
+    const sx = (s.x * scale) + W/2 + (mouseX - W/2) * 0.02;
+    const sy = (s.y * scale) + H/2 + (mouseY - H/2) * 0.02;
+    if (sx < 0 || sx > W || sy < 0 || sy > H) return;
+    const alpha = Math.min(1, (1 - s.z / 1500) * 1.5);
+    const rad = s.r * scale * 0.5;
+    ctx.beginPath();
+    ctx.arc(sx, sy, rad, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(201,168,76,${alpha * 0.7})`;
+    ctx.fill();
+  });
+
+  // Network nodes
+  nodes.forEach(n => {
+    n.x += n.vx + (mouseX - W/2) * 0.00008;
+    n.y += n.vy + (mouseY - H/2) * 0.00008;
+    if (n.x < 0 || n.x > W) n.vx *= -1;
+    if (n.y < 0 || n.y > H) n.vy *= -1;
+  });
+
+  // Draw connections
+  for (let i = 0; i < NODES; i++) {
+    for (let j = i + 1; j < NODES; j++) {
+      const dx = nodes[i].x - nodes[j].x;
+      const dy = nodes[i].y - nodes[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 160) {
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x, nodes[i].y);
+        ctx.lineTo(nodes[j].x, nodes[j].y);
+        const alpha = (1 - dist/160) * 0.12;
+        ctx.strokeStyle = nodes[i].gold ? `rgba(201,168,76,${alpha})` : `rgba(0,212,255,${alpha * 0.6})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Draw nodes
+  nodes.forEach(n => {
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+    ctx.fillStyle = n.gold ? 'rgba(201,168,76,0.5)' : 'rgba(0,212,255,0.35)';
+    ctx.fill();
+  });
+
+  requestAnimationFrame(draw);
+}
+draw(0);
+</script>
+</body>
+</html>
